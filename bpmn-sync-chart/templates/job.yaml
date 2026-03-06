@@ -37,12 +37,14 @@ spec:
               cat /artifact/artifactName
               cat /artifact/artifactUrl
 
-              echo "Downloading artifact..."
-              wget -O /bpmn/artifact "$(cat /artifact/artifactUrl)"
+              echo "Dumping file contents:"
+              for file in /artifact/*; do
+                echo "---- $file ----"
+                cat "$file"
+                echo ""
+              done
 
-              echo "Verifying checksum..."
-              echo "$(cat /artifact/artifactSha256)  /bpmn/artifact" | sha256sum -c -
-
+             
               echo "Done."
           volumeMounts:
             - name: bpmn
