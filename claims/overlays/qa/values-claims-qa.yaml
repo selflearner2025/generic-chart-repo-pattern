@@ -5,7 +5,7 @@ configMapName: "claims-management-app-cm"
 
 # artifact details - Jenkins updates these
 artifactName: "claims-management-qa-v1.0.0.bpmn"
-artifactSha256: "qa-sha256-placeholder"
+artifactSha256: "changing qa artifact"
 artifactUrl: "https://nexus/claims/qa/v1.0.0.bpmn"
 
 # job config
