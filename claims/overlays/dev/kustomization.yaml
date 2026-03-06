@@ -2,7 +2,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: camunda
+namespace: single-bpmn-ns-new                    # ← single shared namespace, same for all envs
 
 helmCharts:
   - name: bpmn-sync-chart          # ← same chart for ALL domains
