@@ -9,4 +9,4 @@ helmCharts:
     repo: http://nexus-nexus-repository-manager.default.svc.cluster.local:8081/repository/helm-hosted/
     version: 0.1.0
     releaseName: claims-dev        # ← domain + env scoped
-    valuesFile: values-dev.yaml    # ← domain specific overrides
+    valuesFile: values-claims-dev.yaml    # ← domain specific overrides
