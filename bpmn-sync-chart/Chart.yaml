@@ -1,0 +1,6 @@
+# Chart.yaml
+apiVersion: v2
+name: bpmn-sync-chart
+description: Generic BPMN artifact sync chart - reusable across all domains
+type: application
+version: 0.1.0

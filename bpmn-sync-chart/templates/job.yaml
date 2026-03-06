@@ -1,0 +1,54 @@
+# templates/job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Values.jobName }}-{{ .Values.env }}"
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  ttlSecondsAfterFinished: {{ .Values.ttlSecondsAfterFinished }}
+  activeDeadlineSeconds: {{ .Values.activeDeadlineSeconds }}
+  backoffLimit: {{ .Values.backoffLimit }}
+  template:
+    spec:
+      restartPolicy: Never
+      volumes:
+        - name: bpmn
+          emptyDir: {}
+        - name: artifact-info
+          configMap:
+            name: "{{ .Values.configMapName }}-{{ .Values.env }}"
+        - name: env-secret
+          secret:
+            secretName: "{{ .Values.secretName }}"
+      containers:
+        - name: downloader
+          image: "{{ .Values.image }}"
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              set -eu
+              echo "Domain: {{ .Values.domainName }}"
+              echo "Environment: {{ .Values.env }}"
+
+              echo "Artifact Details:"
+              cat /artifact/artifactName
+              cat /artifact/artifactUrl
+
+              echo "Downloading artifact..."
+              wget -O /bpmn/artifact "$(cat /artifact/artifactUrl)"
+
+              echo "Verifying checksum..."
+              echo "$(cat /artifact/artifactSha256)  /bpmn/artifact" | sha256sum -c -
+
+              echo "Done."
+          volumeMounts:
+            - name: bpmn
+              mountPath: /bpmn
+            - name: artifact-info
+              mountPath: /artifact
+            - name: env-secret
+              mountPath: /secret
+              readOnly: true

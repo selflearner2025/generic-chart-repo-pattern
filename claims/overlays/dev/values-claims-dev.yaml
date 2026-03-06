@@ -1,0 +1,17 @@
+# claims-management-app/dev/values-dev.yaml
+domainName: "claims"
+env: "dev"
+configMapName: "claims-management-app-cm"
+
+# artifact details - Jenkins updates these
+artifactName: "claims-management-dev-v1.0.0.bpmn"
+artifactSha256: "dev-sha256-placeholder"
+artifactUrl: "https://nexus/claims/dev/v1.0.0.bpmn"
+
+# job config
+jobName: "claims-bpmn-sync-job"
+image: "alpine:3.20"
+ttlSecondsAfterFinished: 400
+activeDeadlineSeconds: 600
+backoffLimit: 1
+secretName: "dev-secret"

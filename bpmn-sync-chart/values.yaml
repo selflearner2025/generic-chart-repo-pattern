@@ -1,0 +1,17 @@
+# values.yaml - base defaults, all empty, must be overridden
+domainName: ""
+env: ""
+configMapName: ""
+
+# artifact details - Jenkins updates these
+artifactName: ""
+artifactSha256: ""
+artifactUrl: ""
+
+# job config
+jobName: ""
+image: "alpine:3.20"
+ttlSecondsAfterFinished: 400
+activeDeadlineSeconds: 600
+backoffLimit: 1
+secretName: ""
