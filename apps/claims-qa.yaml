@@ -1,23 +1,24 @@
+# apps/claims-dev.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: claims-qa
+  name: domain-chart-app-claims-qa
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "1"   # child apps sync after parent
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/selflearner2025/helm-with-kustomize.git
+    repoURL: https://github.com/selflearner2025/generic-chart-repo-pattern.git
     targetRevision: test
-    path: kustomize/claims/overlays/qa         # ← points to qa overlay
+    path: claims/overlays/qa        # ← points to qa overlay
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: single-bpmn-ns                  # ← same shared namespace
+    namespace: single-bpmn-ns-new                 # ← shared namespace
 
   syncPolicy:
     automated:
