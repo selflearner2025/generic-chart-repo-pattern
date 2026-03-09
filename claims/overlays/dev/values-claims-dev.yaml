@@ -1,7 +1,7 @@
 # claims-management-app/dev/values-dev.yaml
-domainName: "claims"
+domainName: "domian-testing-claims"
 env: "dev"
-configMapName: "domian-claims-management-app-cm"
+#configMapName: "domian-claims-management-app-cm"
 
 # artifact details - Jenkins updates these
 artifactName: "claims-management-dev-v1.0.0.bpmn"
@@ -9,7 +9,7 @@ artifactSha256: "claims dev chart"
 artifactUrl: "https://nexus/claims/dev/v1.0.0.bpmn"
 
 # job config
-jobName: "domain-claims-bpmn-sync-job"
+#jobName: "domain-claims-bpmn-sync-job"
 image: "alpine:3.20"
 ttlSecondsAfterFinished: 400
 activeDeadlineSeconds: 600
