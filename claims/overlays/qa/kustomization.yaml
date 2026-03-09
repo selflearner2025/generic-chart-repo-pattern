@@ -7,6 +7,6 @@ namespace: single-bpmn-ns-new                    # ← single shared namespace, 
 helmCharts:
   - name: bpmn-sync-chart          # ← same chart for ALL domains
     repo: http://nexus-nexus-repository-manager.default.svc.cluster.local:8081/repository/helm-hosted/
-    version: 0.2.0
+    version: 0.3.0
     releaseName: claims-qa        # ← domain + env scoped
     valuesFile: values-claims-qa.yaml    # ← domain specific overrides
