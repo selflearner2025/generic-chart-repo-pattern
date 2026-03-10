@@ -5,7 +5,7 @@ env: "dev"
 
 # artifact details - Jenkins updates these
 artifactName: "claims-management-dev-v1.0.0.bpmn"
-artifactSha256: "claims dev chart"
+artifactSha256: "claims dev chart new"
 artifactUrl: "https://nexus/claims/dev/v1.0.0.bpmn"
 
 # job config
